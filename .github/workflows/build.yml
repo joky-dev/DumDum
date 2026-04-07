@@ -76,5 +76,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: DumDum-${{ github.run_number }}
+          name: DumDumX-${{ github.run_number }}
           path: ./app/build/outputs/apk/github/release/*.apk
