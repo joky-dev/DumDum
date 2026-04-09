@@ -35,7 +35,7 @@ jobs:
         run: rm -rf /usr/local/lib/android/sdk/ndk/
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.head_ref }}
           submodules: recursive
@@ -47,11 +47,13 @@ jobs:
           distribution: temurin
 
       - name: Setup Android tools
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
         with:
           packages: ndk;${{ env.ANDROID_NDK_VERSION }} platforms;android-${{ env.ANDROID_SDK_VERSION }} build-tools;${{ env.BUILD_TOOLS_VERSION }}
           log-accepted-android-sdk-licenses: false
-
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+  
       - name: Setup Go
         uses: actions/setup-go@v6
         with:
@@ -75,7 +77,7 @@ jobs:
           ./gradlew app:assembleGitHubRelease
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: DumDumX-${{ github.run_number }}
           path: ./app/build/outputs/apk/github/release/*.apk
