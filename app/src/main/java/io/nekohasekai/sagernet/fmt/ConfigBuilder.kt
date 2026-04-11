@@ -218,7 +218,7 @@ fun buildConfig(
                     }
                 }
             })
-            inbounds.add(Inbound_MixedOptions().apply {
+            if (!isVPN) inbounds.add(Inbound_MixedOptions().apply {
                 type = "mixed"
                 tag = TAG_MIXED
                 listen = bind
