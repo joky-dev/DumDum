@@ -51,8 +51,9 @@ jobs:
         with:
           packages: ndk;${{ env.ANDROID_NDK_VERSION }} platforms;android-${{ env.ANDROID_SDK_VERSION }} build-tools;${{ env.BUILD_TOOLS_VERSION }}
           log-accepted-android-sdk-licenses: false
+      
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@v6
   
       - name: Setup Go
         uses: actions/setup-go@v6
